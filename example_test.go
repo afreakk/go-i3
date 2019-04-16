@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"go.i3wm.org/i3"
+	"github.com/afreakk/go-i3"
 )
 
 func ExampleIsUnsuccessful() {

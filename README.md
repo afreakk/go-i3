@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/i3/go-i3.svg?branch=master)](https://travis-ci.org/i3/go-i3)
+## Forked to support sway by setting `i3.WMClient = i3.WMTypeSway`, and support ordinary i3 by doing nothing
 [![Go Report Card](https://goreportcard.com/badge/go.i3wm.org/i3)](https://goreportcard.com/report/go.i3wm.org/i3)
 [![GoDoc](https://godoc.org/go.i3wm.org/i3?status.svg)](https://godoc.org/go.i3wm.org/i3)
 

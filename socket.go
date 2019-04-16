@@ -16,6 +16,15 @@ import (
 // overloaded, in which case we are probably doing you a favor by erroring out.
 const reconnectTimeout = 10 * time.Second
 
+type WMType int
+
+const (
+	WMTypeI3   WMType = 0
+	WMTypeSway WMType = 1
+)
+
+var WMClient = WMTypeI3
+
 // remote is a singleton containing the socket path and auto-detected byte order
 // which i3 is using. It is lazily initialized by getIPCSocket.
 var remote struct {

@@ -38,6 +38,10 @@ var version Version
 // version is at least minor or newer. Otherwise, it returns an error message
 // stating i3 is too old.
 func AtLeast(major int64, minor int64) error {
+	if WMClient != WMTypeI3 {
+		// all these version checks are only relevant to i3
+		return nil
+	}
 	if major == 0 {
 		return fmt.Errorf("BUG: major == 0 is non-sensical. Is a lookup table entry missing?")
 	}

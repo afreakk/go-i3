@@ -1,4 +1,4 @@
-module go.i3wm.org/i3
+module github.com/afreakk/go-i3
 
 require (
 	github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802
