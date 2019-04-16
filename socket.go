@@ -38,9 +38,19 @@ func getIPCSocket(updateSocketPath bool) (*socket, net.Conn, error) {
 	defer remote.mu.Unlock()
 	path := remote.path
 	if updateSocketPath || remote.path == "" {
-		out, err := exec.Command("i3", "--get-socketpath").CombinedOutput()
-		if err != nil {
-			return nil, nil, fmt.Errorf("getting i3 socketpath: %v (output: %s)", err, out)
+		var out []byte
+		if WMClient == WMTypeI3 {
+			out, err := exec.Command("i3", "--get-socketpath").CombinedOutput()
+			if err != nil {
+				return nil, nil, fmt.Errorf("getting i3 socketpath: %v (output: %s)", err, out)
+			}
+		} else if WMClient == WMTypeSway {
+			out, err := exec.Command("sway", "--get-socketpath").CombinedOutput()
+			if err != nil {
+				return nil, nil, fmt.Errorf("getting sway socketpath: %v (output: %s)", err, out)
+			}
+		} else {
+			return nil, nil, fmt.Errorf("unknown WMClient: %v", WMClient)
 		}
 		path = strings.TrimSpace(string(out))
 	}
