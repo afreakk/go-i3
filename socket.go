@@ -39,13 +39,14 @@ func getIPCSocket(updateSocketPath bool) (*socket, net.Conn, error) {
 	path := remote.path
 	if updateSocketPath || remote.path == "" {
 		var out []byte
+		var err error
 		if WMClient == WMTypeI3 {
-			out, err := exec.Command("i3", "--get-socketpath").CombinedOutput()
+			out, err = exec.Command("i3", "--get-socketpath").CombinedOutput()
 			if err != nil {
 				return nil, nil, fmt.Errorf("getting i3 socketpath: %v (output: %s)", err, out)
 			}
 		} else if WMClient == WMTypeSway {
-			out, err := exec.Command("sway", "--get-socketpath").CombinedOutput()
+			out, err = exec.Command("sway", "--get-socketpath").CombinedOutput()
 			if err != nil {
 				return nil, nil, fmt.Errorf("getting sway socketpath: %v (output: %s)", err, out)
 			}
